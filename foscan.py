@@ -18,21 +18,31 @@ def newclicked():
     txtName.delete(0, END)
 
 
-def ScanNow():
+def ScanNow():                                              #Main Scan Function
     print("Scan Request received")
-    tempvar = scanner.get()
-    varName=  txtName.get()
-    varName=varName.replace (" ","_")
+    tempvar: int = scanner.get()
+    varName = txtName.get()
+    varName = varName.replace(" ","_")
+    varName = varName.replace("/","-")
+    varName = varName.replace("?","-")
+    varName = varName.replace(";", "-")
+    varName = varName.replace(":", "-")
+    varName = varName.replace("*", "-")
     varDocType=cmbDoctype.get()
     varDocType=varDocType.replace(" ","_")
+    varDocType = varDocType.replace("/", "-")
+    varDocType = varDocType.replace("?", "-")
+    varDocType = varDocType.replace(":", "-")
+    varDocType = varDocType.replace(";", "-")
+    varDocType = varDocType.replace("*", "-")
     varFileName=varName+" "+varDocType+".pdf"
     print (varFileName)
     print(tempvar)
-    if tempvar == 1:
+    if tempvar == 1:                                # Normal Scan
         print("Normal Scan")
-    elif tempvar == 2:
+    elif tempvar == 2:                              # Text Scan
         print("Text Scan")
-    elif tempvar==3:
+    elif tempvar==3:                                # Color Scan
         print("Colour Scan")
     else:
         messagebox.showerror("Warning", "Please select Scan Type")
