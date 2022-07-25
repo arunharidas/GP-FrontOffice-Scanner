@@ -31,6 +31,8 @@ def ScanNow():
     if tempvar == 1:
         print("Normal Scan")
     elif tempvar == 2:
+        print("Text Scan")
+    elif tempvar==3:
         print("Colour Scan")
     else:
         messagebox.showerror("Warning", "Please select Scan Type")
@@ -38,7 +40,10 @@ def ScanNow():
 
 
 def about():
-    messagebox.showinfo("GP Front Office Scanner", "Created by Arun Haridas \nTechnical Assistant\nMarangattupilly Gramapanchayat")
+    messagebox.showinfo("About", "GP Front Office Scanner (alpha version)\n"
+                                 "Created by Arun Haridas \n"
+                                 "Technical Assistant\n"
+                                 "Marangattupilly Gramapanchayat")
 
 # Widgets
 lblName = Label(window,
@@ -53,14 +58,18 @@ cmbDoctype = ttk.Combobox(window,
                                   "Identity Card",
                                   "Building Plan"])
 scanner = IntVar()
-radiobwscan = ttk.Radiobutton(window,
+radionscan = ttk.Radiobutton(window,
                               text="Normal scan",
                               variable=scanner,
                               value=1)
+radiotscan = ttk.Radiobutton(window,
+                             text="Text scan",
+                             variable=scanner,
+                             value=2)
 radiocscan = ttk.Radiobutton(window,
                              text="Color scan",
                              variable=scanner,
-                             value=2)
+                             value=3)
 btnNew = ttk.Button(window,
                     text="New Application",
                     command=newclicked,
@@ -100,19 +109,20 @@ lblName.grid(row=1, column=0, sticky=W)
 txtName.grid(row=1, column=1, sticky=W)
 lblDocType.grid(row=2, column=0, sticky=W)
 cmbDoctype.grid(row=2, column=1, sticky=W)
-radiobwscan.grid(row=3, column=1, sticky=W)
+radionscan.grid(row=3, column=1, sticky=W)
 scanner.set(1)
-radiocscan.grid(row=4, column=1, sticky=W)
-btnNew.grid(row=5, column=0)
-btnScan.grid(row=5, column=1, sticky=W)
-Label(window, text=" ").grid(row=6)
-btnDeleteOldScanned.grid(row=7, column=0)
-btnOpenScannedFolder.grid(row=7, column=1)
-btnOpenILGMS.grid(row=8, column=0)
-btnOpenMFSearch.grid(row=8, column=1)
-Label(window, text=" ").grid(row=9)
-btnAbout.grid(row=10,column=0)
-btnSettings.grid(row=10, column=1)
+radiotscan.grid(row=4, column=1, sticky=W)
+radiocscan.grid(row=5, column=1, sticky=W)
+btnNew.grid(row=6, column=0)
+btnScan.grid(row=6, column=1, sticky=W)
+Label(window, text=" ").grid(row=7)
+btnDeleteOldScanned.grid(row=8, column=0)
+btnOpenScannedFolder.grid(row=8, column=1)
+btnOpenILGMS.grid(row=9, column=0)
+btnOpenMFSearch.grid(row=9, column=1)
+Label(window, text=" ").grid(row=10)
+btnAbout.grid(row=11,column=0)
+btnSettings.grid(row=11, column=1)
 
 
 window.mainloop()
