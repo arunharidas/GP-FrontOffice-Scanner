@@ -4,6 +4,7 @@ from tkinter import *
 from tkinter import ttk
 from tkinter import messagebox
 import string
+import os
 
 window = Tk()
 window.geometry("400x380")
@@ -18,7 +19,7 @@ def newclicked():
     txtName.delete(0, END)
 
 
-def ScanNow():                                              #Main Scan Function
+def ScanNow():                                                                                                          #Main Scan Function
     print("Scan Request received")
     tempvar: int = scanner.get()
     varName = txtName.get()
@@ -38,14 +39,18 @@ def ScanNow():                                              #Main Scan Function
     varFileName=varName+" "+varDocType+".pdf"
     print (varFileName)
     print(tempvar)
-    if tempvar == 1:                                # Normal Scan
-        print("Normal Scan")
-    elif tempvar == 2:                              # Text Scan
-        print("Text Scan")
-    elif tempvar==3:                                # Color Scan
-        print("Colour Scan")
+    if (varName=="") or (varDocType==""):
+        messagebox.showerror("Error", "Please check application name and Document type")
     else:
-        messagebox.showerror("Warning", "Please select Scan Type")
+        if tempvar == 1:                                # Normal Scan
+            print("Normal Scan")
+            os.system("dir")                                                                                                #xxxxxxxxxxxxx test cmd/c
+        elif tempvar == 2:                              # Text Scan
+            print("Text Scan")
+        elif tempvar==3:                                # Color Scan
+            print("Colour Scan")
+        else:
+            messagebox.showerror("Warning", "Please select Scan Type")
 
 
 
