@@ -6,11 +6,12 @@ from tkinter import messagebox
 import string
 import os
 
+AppVersion="0.1 (Alpha edition)"
 window = Tk()
 window.geometry("400x380")
 window.resizable(False, False)
 window.title("GP Front Office Scanner")
-himage = PhotoImage(file='./a.png')
+himage = PhotoImage(file="./a.png")
 Label(window, text="LB Front Office Scan", image=himage).grid(row=0, columnspan=2)
 
 
@@ -18,24 +19,24 @@ Label(window, text="LB Front Office Scan", image=himage).grid(row=0, columnspan=
 def newclicked():
     txtName.delete(0, END)
 
+def setproperfilename(fname):                           # file name correct
+    fname = fname.replace(" ","_")
+    fname = fname.replace("/","-")
+    fname = fname.replace("/", "-")
+    fname = fname.replace("?", "-")
+    fname = fname.replace(";", "-")
+    fname = fname.replace(":", "-")
+    fname = fname.replace("<", "-")
+    fname = fname.replace(">", "-")
+    return fname
 
 def ScanNow():                                                                                                          #Main Scan Function
     print("Scan Request received")
     tempvar: int = scanner.get()
     varName = txtName.get()
-    varName = varName.replace(" ","_")
-    varName = varName.replace("/","-")
-    varName = varName.replace("?","-")
-    varName = varName.replace(";", "-")
-    varName = varName.replace(":", "-")
-    varName = varName.replace("*", "-")
+    varName = setproperfilename(varName)
     varDocType=cmbDoctype.get()
-    varDocType=varDocType.replace(" ","_")
-    varDocType = varDocType.replace("/", "-")
-    varDocType = varDocType.replace("?", "-")
-    varDocType = varDocType.replace(":", "-")
-    varDocType = varDocType.replace(";", "-")
-    varDocType = varDocType.replace("*", "-")
+    varDocType=setproperfilename(varDocType)
     varFileName=varName+" "+varDocType+".pdf"
     print (varFileName)
     print(tempvar)
@@ -55,7 +56,8 @@ def ScanNow():                                                                  
 
 
 def about():
-    messagebox.showinfo("About", "GP Front Office Scanner (alpha version)\n"
+    messagebox.showinfo("About", "GP Front Office Scanner\n"
+                                 "Version : "+AppVersion+"\n"
                                  "Created by Arun Haridas \n"
                                  "Technical Assistant\n"
                                  "Marangattupilly Gramapanchayat")
