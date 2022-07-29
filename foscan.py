@@ -44,12 +44,14 @@ def ScanNow():                                                                  
         messagebox.showerror("Error", "Please check application name and Document type")
     else:
         if tempvar == 1:                                # Normal Scan
-            print("Normal Scan")
-            os.system("dir")                                                                                                #xxxxxxxxxxxxx test cmd/c
+            cmd='NAPS2.Console.exe -o "Scanned\\' + varFileName +'" --progress --profile ilgms-n'
+            os.system(cmd)                                                                                                #xxxxxxxxxxxxx test cmd/c
         elif tempvar == 2:                              # Text Scan
-            print("Text Scan")
+            cmd='NAPS2.Console.exe -o "Scanned\\' + varFileName +'" --progress --profile ilgms-t'
+            os.system(cmd)  
         elif tempvar==3:                                # Color Scan
-            print("Colour Scan")
+            cmd='NAPS2.Console.exe -o "Scanned\\' + varFileName +'" --progress --profile ilgms-c'
+            os.system(cmd)  
         else:
             messagebox.showerror("Warning", "Please select Scan Type")
 
@@ -57,8 +59,9 @@ def ScanNow():                                                                  
 
 def about():
     messagebox.showinfo("About", "GP Front Office Scanner\n"
-                                 "Version : "+AppVersion+"\n"
-                                 "Created by Arun Haridas \n"
+                                 "Version : "+AppVersion+"\n\n"
+                                 "Created by \n"
+                                 "Arun Haridas \n"
                                  "Technical Assistant\n"
                                  "Marangattupilly Gramapanchayat")
 
